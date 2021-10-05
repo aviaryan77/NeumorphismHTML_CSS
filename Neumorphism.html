@@ -1,8 +1,7 @@
 <html lang="en">
   <head>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <title>Neumorphism Sign up form</title>
     <style type="text/css">
@@ -14,6 +13,12 @@
         --Shadow2: #444446;
         --SforIcon1: #2a2b2c;
         --SforIcon2: #020305;
+        --fieldShadow: #42413f;
+        --buttonText: #F2AA4CFF;
+        --buttonBg: #040406;
+        --fontColor: #ddd;
+        --white1: #ddd;
+        --white2: #fafafa;
       }
       * {
         margin: 0;
@@ -54,6 +59,14 @@
         border-radius: 16px;
         box-shadow: inset 4px 4px 8px var(--Shadow1),
           inset -4px -4px 8px var(--Shadow2);
+        transition: all 0.2s ease-in-out;
+      }
+
+      #user:focus-within,
+      #email:focus-within,
+      #lock:focus-within {
+        box-shadow: inset 4px 4px 8px var(--fieldShadow),
+          inset -4px -4px 8px var(--fieldShadow);
       }
 
       input {
@@ -62,18 +75,26 @@
         border: none;
         outline: none;
         padding-left: 6px;
+        color: var(--fontColor);
       }
       #btn {
         width: 240px;
         height: 42px;
-        background: none;
+        background: var(--buttonBg);
         border-radius: 32px;
         border: none;
         outline: none;
         font-size: 20px;
-        color: #4f7afe;
+        color: var(--buttonText);
         box-shadow: 4px 4px 8px var(--Shadow2), -4px -4px 8px var(--Shadow1);
         margin: 16px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+
+      #btn:hover {
+        background-color: var(--buttonText);
+        color: var(--buttonBg);
       }
 
       h4 {
@@ -81,6 +102,7 @@
         margin: 16px auto;
       }
       #social_media i {
+        cursor: pointer;
         margin: 0 10px;
         padding: 8px;
         width: 36px;
@@ -90,10 +112,13 @@
           inset -1px -1px 2px var(--SforIcon1);
         border-radius: 50%;
         color: #4f7af1;
-        transition-duration: 0.2s;
+        transition: all 0.2s ease-in-out;
       }
       #social_media i:hover {
         transform: scale(1.2);
+        background: #4f7af1;
+        color: var(--bg1);
+        box-shadow: none;
       }
       #social_media i:active {
         transform: scale(0.9);
@@ -105,14 +130,15 @@
       #signIn {
         color: #4f7af1;
       }
+      #signIn:hover {
+        color: #e95f35;
+      }
       #drk {
         display: none;
         color: #112;
-        box-shadow: 4px 4px 8px var(--Shadow2), -4px -4px 8px var(--Shadow1);
       }
       lt {
         color: #eef;
-        box-shadow: 4px 4px 8px var(--Shadow1), -4px -4px 8px var(--Shadow2);
       }
       #mode {
         padding: 4px 8px;
@@ -131,24 +157,28 @@
       #mode:active {
         transform: scale(0.9);
       }
+      [class^="material-icons"]{
+        cursor: pointer;
+        color: var(--fontColor);
+      }
     </style>
   </head>
 
   <body>
     <div id="container" align="center">
-      <h1>Sign Up</h1>
+      <h1>Register</h1>
 
-      <div id="user">
+      <div id="user" class="field">
         <i class="fa fa-user"></i>
         <input type="text" placeholder="Username" />
       </div>
 
-      <div id="email">
+      <div id="email" class="field">
         <i class="fa fa-envelope"></i>
         <input type="email" placeholder="email" />
       </div>
 
-      <div id="lock">
+      <div id="lock" class="field">
         <i class="fa fa-lock"></i>
         <input type="password" placeholder="Create password" />
       </div>
@@ -165,8 +195,8 @@
         <a href="#" id="signIn">Sign In</a>
       </div>
       <div id="mode">
-        <button id="lt" onclick="light()">Light mode</button>
-        <button id="drk" onclick="dark()">Dark mode</button>
+        <span id="lt" class="material-icons" onclick="light()">light_mode</span>
+        <span id="drk" class="material-icons" onclick="dark()">dark_mode</span>
       </div>
     </div>
   </body>
@@ -181,6 +211,10 @@
       color.setProperty('--Shadow2', '#fcfcfe');
       color.setProperty('--SforIcon1', '#ececee');
       color.setProperty('--SforIcon2', '#8a8b8e');
+      color.setProperty('--fieldShadow', '#aaa');
+      color.setProperty('--fontColor', '#42413f');
+      color.setProperty('--buttonText', '#D6ED17FF');
+      color.setProperty('--buttonBg', '#606060FF');
       document.getElementById('lt').style.display = 'none';
       document.getElementById('drk').style.display = 'block';
     }
@@ -192,7 +226,10 @@
       color.setProperty('--Shadow2', '#444446');
       color.setProperty('--SforIcon1', '#2a2b2c');
       color.setProperty('--SforIcon2', '#2a2b2c');
-
+      color.setProperty('--fieldShadow', '#42413f');
+      color.setProperty('--fontColor', '#ddd');
+      color.setProperty('--buttonText', '#F2AA4CFF');
+      color.setProperty('--buttonBg', '#040406');
       document.getElementById('drk').style.display = 'none';
       document.getElementById('lt').style.display = 'block';
     }
